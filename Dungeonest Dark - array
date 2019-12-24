@@ -1,0 +1,57 @@
+function solve(array){
+
+let dungeon = array[0].split(`|`);    
+let dungeonLength = dungeon.length;
+
+let startHealth = 100;
+let countRooms = 0;
+let allCoins = 0;
+
+
+
+for(let i = 0; i < dungeon.length; i++){
+let currentRooms = dungeon[i].split(` `);
+let command = currentRooms[0];
+let room = Number (currentRooms[1]);
+countRooms++;
+
+if(command === "potion"){
+startHealth += room;
+if(startHealth > 100){
+let leftHp = startHealth - room; 
+startHealth -= room;
+let theRestHp = 100 - leftHp;  
+
+console.log(`You healed for ${theRestHp} hp.`);
+console.log(`Current health: ${leftHp + theRestHp} hp.`);
+startHealth += theRestHp;
+}else if(startHealth < 100){
+console.log(`You healed for ${room} hp.`)
+console.log(`Current health: ${startHealth} hp.`);
+}
+
+}else if(command === "chest"){
+console.log(`You found ${room} coins.`);   
+allCoins += room;
+
+}else{
+startHealth -= room;
+if(startHealth <= 0){
+console.log(`You died! Killed by ${command}.`);
+console.log(`Best room: ${countRooms}`);
+break;
+}else{
+console.log(`You slayed ${command}.`);
+}
+}   
+
+if(dungeonLength === countRooms){
+console.log(`You've made it!
+Coins: ${allCoins}
+Health: ${startHealth}`);
+}
+}
+
+
+}
+solve([ 'cat 10|potion 30|orc 10|chest 10|snake 25|chest 110' ] )
