@@ -1,0 +1,96 @@
+function solve(input){
+
+
+let email = input.shift();
+let valid = true
+
+for (const line of input) {
+    
+let task = line.split(` `);
+let cmd = task[0];
+
+
+if(line.includes(cmd[0])){
+
+    if(line.includes('Make Upper')){
+    email = email.toUpperCase();
+    console.log(email)
+    valid = true;
+    }
+
+    else if(line.includes(`Make Lower`)){
+    email = email.toLowerCase(); 
+    console.log(email)
+    valid = false;
+
+    }else if(cmd === 'GetDomain'){
+        if(valid === true){
+    let cut = (email.lastIndexOf(`COM`))
+
+    console.log(email.substr(cut))
+
+          }else if(valid === false){
+            let cut = (email.lastIndexOf(`com`))
+      
+            console.log(email.substr(cut))
+          }
+    }
+
+    else if(cmd === 'GetUsername'){
+    
+        if(email.includes(`@`)){
+
+     let symbol = email.indexOf(`@`);
+   
+     let start = email.substring(0,1)
+     let ind = email.indexOf(start)
+    
+     let remove = email.substring(ind,symbol);
+     console.log(remove);
+    }else{
+        if(valid === true){
+            console.log(`The email ${email} doesn't contain the @ symbol.`);
+        }else if(valid === false) {
+            console.log(`The email ${email} doesn't contain the @ symbol.`);
+            
+        }
+    }
+    }
+
+    else if(cmd === 'Replace'){
+
+    let rgx = new RegExp(task[1], `g`);
+     email = email.replace(rgx, '-');
+        console.log(email)
+    }
+
+    else if(cmd === "Encrypt"){ 
+        let output = '';    
+    for (const i of email) {
+     
+        let a = i.charCodeAt();
+    output += a + " ";  
+         
+    }
+ console.log(output)
+    }
+    if(cmd === 'Complete'){
+    break;
+    }
+}
+
+
+
+}
+
+
+}
+solve([
+    'Another@Mail.com',
+    'Make Lower',
+    'GetUsername',
+    'GetDomain 3',
+    'Replace',
+    'Complete'
+  ]
+  )
