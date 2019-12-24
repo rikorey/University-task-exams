@@ -1,4 +1,4 @@
-# University-exam-task-1
+# University-exam-task
 
 Email Validator
 
