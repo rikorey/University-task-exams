@@ -44,3 +44,17 @@ Input
 
 Output
 •	Print the output of every command in the format described above.
+
+
+
+
+
+
+
+Mike123@somemail.com
+Make Upper
+GetDomain 3
+GetUsername
+Encrypt
+Complete
+
