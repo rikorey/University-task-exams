@@ -51,10 +51,23 @@ Output
 
 
 
+Input
 Mike123@somemail.com
 Make Upper
 GetDomain 3
 GetUsername
 Encrypt
 Complete
+
+
+Output
+MIKE123@SOMEMAIL.COM
+COM
+MIKE123
+77 73 75 69 49 50 51 64 83 79 77 69 77 65 73 76 46 67 79 77
+
+
+
+
+
 
