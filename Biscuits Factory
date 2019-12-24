@@ -1,0 +1,52 @@
+function solve(input){
+
+let amountOfBiscuits = Number(input.shift());
+let countOfWorkers = Number(input.shift());
+let biscuitsOfCompetingFactory = Number(input.shift());
+let days = 30;
+let sumOfBiscuits = 0
+let oddsumBiscuits = 0;
+
+let calculate = 0
+
+
+
+for(let i = 1; i <= days; i++){
+
+if(i % 3 === 0){
+
+calculate += Math.floor((amountOfBiscuits * 0.75)*countOfWorkers);
+
+}else{
+calculate += (amountOfBiscuits*countOfWorkers)    
+}
+
+}
+let sum = calculate*days
+
+
+let fight = calculate - biscuitsOfCompetingFactory;
+
+let percent = Math.abs(fight / biscuitsOfCompetingFactory)*100;
+
+
+
+console.log(`You have produced ${calculate} biscuits for the past month.`)
+
+
+if(calculate > biscuitsOfCompetingFactory){
+console.log(`You produce ${percent.toFixed(2)} percent more biscuits.`)
+}else {
+console.log(`You produce ${(percent.toFixed(2))} percent less biscuits.`)    
+}
+
+
+
+
+
+}
+solve([ 65
+12
+26000
+])
+  )
