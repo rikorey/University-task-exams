@@ -2,7 +2,7 @@ function solve(input){
 
 
 let email = input.shift();
-let valid = true
+let valid = true;
 
 for (const line of input) {
     
@@ -14,25 +14,25 @@ if(line.includes(cmd[0])){
 
     if(line.includes('Make Upper')){
     email = email.toUpperCase();
-    console.log(email)
+    console.log(email);
     valid = true;
     }
 
     else if(line.includes(`Make Lower`)){
     email = email.toLowerCase(); 
-    console.log(email)
+    console.log(email);
     valid = false;
 
     }else if(cmd === 'GetDomain'){
         if(valid === true){
     let cut = (email.lastIndexOf(`COM`))
 
-    console.log(email.substr(cut))
+    console.log(email.substr(cut));
 
           }else if(valid === false){
-            let cut = (email.lastIndexOf(`com`))
+            let cut = (email.lastIndexOf(`com`));
       
-            console.log(email.substr(cut))
+            console.log(email.substr(cut));
           }
     }
 
@@ -42,8 +42,8 @@ if(line.includes(cmd[0])){
 
      let symbol = email.indexOf(`@`);
    
-     let start = email.substring(0,1)
-     let ind = email.indexOf(start)
+     let start = email.substring(0,1);
+     let ind = email.indexOf(start);
     
      let remove = email.substring(ind,symbol);
      console.log(remove);
@@ -61,7 +61,7 @@ if(line.includes(cmd[0])){
 
     let rgx = new RegExp(task[1], `g`);
      email = email.replace(rgx, '-');
-        console.log(email)
+        console.log(email);
     }
 
     else if(cmd === "Encrypt"){ 
