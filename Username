@@ -1,0 +1,58 @@
+function username(arr) {
+ 
+    let username = arr.shift();
+ 
+    function isValid(index, array) {
+        return index >= 0 && index < array.length
+    }
+ 
+    for (const line of arr.slice(0, arr.length - 1)) {
+        let task = line.split(" ");
+        let cmd = task[0];
+ 
+        if (cmd === "Case") {
+            if (task[1] === "lower") {
+                username = username.toLowerCase();
+            } else {
+                username = username.toUpperCase();
+            }
+            console.log(username)
+        } else if (cmd === "Reverse") {
+            let startIndex = Number(task[1]);
+            let endIndex = Number(task[2]);
+ 
+            if (isValid(startIndex, username) && isValid(endIndex, username)) {
+ 
+                let substr = username.substring(startIndex, endIndex + 1).split("").reverse().join("");
+                console.log(substr)
+            }
+ 
+        } else if (cmd === "Cut") {
+            let substr = task[1];
+            if (username.includes(substr)) {
+                let start = username.indexOf(substr);
+                let count = substr.length;
+                username = username.substring(0, start) + username.substring(start + count);
+                console.log(username)
+            } else {
+                console.log(`The word ${username} doesn't contain ${substr}.`)
+            }
+        } else if (cmd === "Replace") {
+            let char = task[1];
+            if (username.includes(char)) {
+                let pattern = new RegExp(char, "g")
+                username = username.replace(pattern, "*")
+                console.log(username);
+            }
+ 
+        } else if (cmd === "Check") {
+            let char = task[1];
+            if (username.includes(char)) {
+                console.log("Valid");
+            } else {
+                console.log(`Your username must contain ${char}.`);
+            }
+        }
+    }
+}
+username([ 'ThisIsMyString', 'Reverse 1 4', 'Cut ES', 'Check @', 'Sign up' ])
