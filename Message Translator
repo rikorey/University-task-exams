@@ -1,0 +1,25 @@
+function solve(input) {
+
+    for (let line of input.slice(1)) {
+
+
+        let regex = /^!(?<cmd>[A-Z][a-z]{2,})!:\[(?<msg>[A-Za-z]{8,})\]$/g;
+        let match = regex.exec(line);
+
+        if (match) {
+            let {cmd, msg} = match.groups;
+
+        
+            let encryptedMsg = msg.split('').map(x => x.charCodeAt());
+            console.log(`${cmd}: ${encryptedMsg.join(' ')}`);
+        
+
+        }else {
+            console.log('The message is invalid');
+        }
+
+    }
+
+}
+solve([ '2', '!Send!:[IvanisHere]', '*Time@:[Itis5amAlready]' ]
+  )
